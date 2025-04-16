@@ -3,51 +3,51 @@ local response = game:HttpGet("https://apis.roblox.com/universes/v1/places/" .. 
 local data = HttpService:JSONDecode(response)
 local universeId = data.universeId -- Universe id = game id
 
-if(universeId=6239989165)then --Money Clicker Inc
+if(universeId==6239989165)then --Money Clicker Inc
 loadstring(game:HttpGet("https://raw.githubusercontent.com/de-ishi/scripts/refs/heads/main/Money%20Clicker%20Inc%20obf.lua"))()
 end
 
-if(universeId=6441768934)then --Bread Incremental
+if(universeId==6441768934)then --Bread Incremental
 loadstring(game:HttpGet("https://raw.githubusercontent.com/de-ishi/scripts/refs/heads/main/Bread%20Incremental%20Obf.lua"))()
 end
 
-if(universeId=4924516231)then --Punch Simulator
+if(universeId==4924516231)then --Punch Simulator
 loadstring(game:HttpGet("https://gist.githubusercontent.com/de-ishi/0d33ed366cbc8535c19208446bc0e560/raw"))()
 end
 
-if(universeId=4777817887)then --Blade Ball
+if(universeId==4777817887)then --Blade Ball
 loadstring(game:HttpGet("https://gist.githubusercontent.com/de-ishi/6712885d9952b7a0321b063cfa1626e1/raw"))()
 end
 
-if(universeId=6191629064)then --Soup Incremental
+if(universeId==6191629064)then --Soup Incremental
 loadstring(game:HttpGet("https://raw.githubusercontent.com/de-ishi/scripts/refs/heads/main/Soup%20Incremental%20obf.lua"))()
 end
 
-if(universeId=2235801300)then --AFK Incremental
+if(universeId==2235801300)then --AFK Incremental
 loadstring(game:HttpGet("https://raw.githubusercontent.com/de-ishi/scripts/refs/heads/main/AFK%20Incremental%20%20Reimagined%20obf.lua"))()
 end
 
-if(universeId=7250663454)then --Anime Spirits
+if(universeId==7250663454)then --Anime Spirits
 loadstring(game:HttpGet('https://raw.githubusercontent.com/de-ishi/scripts/refs/heads/main/Anime%20Spirits%20Journey%20obf.lua'))()
 end
 
-if(universeId=6694982457)then --Anime Geek
+if(universeId==6694982457)then --Anime Geek
 loadstring(game:HttpGet('https://raw.githubusercontent.com/de-ishi/scripts/refs/heads/main/Anime%20Geek%20obf.lua'))()
 end
 
-if(universeId=7178032757)then --Rebirth Champions Ultimate
+if(universeId==7178032757)then --Rebirth Champions Ultimate
 loadstring(game:HttpGet('https://raw.githubusercontent.com/de-ishi/scripts/refs/heads/main/Rebirth%20Champons%20Ultimate%20obf.lua'))()
 end
 
-if(universeId=7360689073)then --ERPO
+if(universeId==7360689073)then --ERPO
 loadstring(game:HttpGet('https://raw.githubusercontent.com/de-ishi/scripts/refs/heads/main/E.R.P.O.obf.txt'))()
 end
 
-if(universeId=6504986360)then --Bubble gum sim inf
+if(universeId==6504986360)then --Bubble gum sim inf
 loadstring(game:HttpGet('https://raw.githubusercontent.com/de-ishi/scripts/refs/heads/main/BGSI%20obf'))()
 end
 
-if(universeId=6761981532)then --Anime Power
+if(universeId==6761981532)then --Anime Power
 loadstring(game:HttpGet('https://raw.githubusercontent.com/de-ishi/scripts/refs/heads/main/Anime%20Power%20obf.Lua'))()
 end
 
