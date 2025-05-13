@@ -50,5 +50,7 @@ end
 if(universeId==6761981532)then --Anime Power
 loadstring(game:HttpGet('https://raw.githubusercontent.com/de-ishi/scripts/refs/heads/main/Anime%20Power%20obf.Lua'))()
 end
-
+if(universeId==7436755782)then --grow a garden
+loadstring(game:HttpGet('https://raw.githubusercontent.com/de-ishi/scripts/refs/heads/main/growAgardenOBF'))()
+end
 warn("If nothing loaded then you are not in a supported game")
