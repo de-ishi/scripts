@@ -53,4 +53,9 @@ end
 if(universeId==7436755782)then --grow a garden
 loadstring(game:HttpGet('https://raw.githubusercontent.com/de-ishi/scripts/refs/heads/main/growAgardenOBF'))()
 end
+
+if(universeId==6701277882)then --fish it
+loadstring(game:HttpGet('https://raw.githubusercontent.com/de-ishi/scripts/refs/heads/main/FishItObfuscated'))()
+end
+
 warn("If nothing loaded then you are not in a supported game")
