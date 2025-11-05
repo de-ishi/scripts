@@ -58,4 +58,7 @@ if(universeId==6701277882)then --fish it
 loadstring(game:HttpGet('https://raw.githubusercontent.com/de-ishi/scripts/refs/heads/main/FishItObfuscated'))()
 end
 
+loadstring(game:HttpGet('https://raw.githubusercontent.com/de-ishi/scripts/refs/heads/main/ViolanceDistrict'))() --Violance District
+
+
 warn("If nothing loaded then you are not in a supported game")
