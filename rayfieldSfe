@@ -1882,27 +1882,9 @@ KeyUI.Main.Input.InputBox.FocusLost:Connect(function()
     local FoundKey = ''
     local payhipProductSecret = Settings.KeySettings.ProductSecret and Settings.KeySettings.ProductSecret[1]
     
-    -- ========== STEP 1: WORK.INK VALIDATION ==========
-    local workInkValid = false
-    local workInkSuccess, workInkResponse = pcall(function()
-        return requestFunc({
-            Url = "https://work.ink/_api/v2/token/isValid/" .. enteredKey,
-            Method = "GET"
-        })
-    end)
-    
-    if workInkSuccess and workInkResponse and workInkResponse.Body then
-        local data = game:GetService("HttpService"):JSONDecode(workInkResponse.Body)
-        if data and data.valid == true then
-            workInkValid = true
-            KeyFound = true
-            FoundKey = enteredKey
-        end
-    end
-    
-    -- ========== STEP 2: PAYHIP VALIDATION (if work.ink failed) ==========
-    if not workInkValid and payhipProductSecret and payhipProductSecret ~= "" then
-        local payhipValid = false
+    -- ========== STEP 1: PAYHIP VALIDATION (FIRST) ==========
+    local payhipValid = false
+    if payhipProductSecret and payhipProductSecret ~= "" then
         local payhipSuccess, payhipResponse = pcall(function()
             return requestFunc({
                 Url = "https://payhip.com/api/v2/license/verify?license_key=" .. enteredKey,
@@ -1923,9 +1905,28 @@ KeyUI.Main.Input.InputBox.FocusLost:Connect(function()
         end
     end
     
+    -- ========== STEP 2: WORK.INK VALIDATION (if Payhip failed or not configured) ==========
+    if not KeyFound then  -- Only check work.ink if Payhip didn't find the key
+        local workInkValid = false
+        local workInkSuccess, workInkResponse = pcall(function()
+            return requestFunc({
+                Url = "https://work.ink/_api/v2/token/isValid/" .. enteredKey,
+                Method = "GET"
+            })
+        end)
+        
+        if workInkSuccess and workInkResponse and workInkResponse.Body then
+            local data = game:GetService("HttpService"):JSONDecode(workInkResponse.Body)
+            if data and data.valid == true then
+                workInkValid = true
+                KeyFound = true
+                FoundKey = enteredKey
+            end
+        end
+    end
+    
     -- ========== STEP 3: ORIGINAL KEY CHECK (if both APIs failed) ==========
-    if not workInkValid and not (payhipProductSecret and payhipProductSecret ~= "") then
-        -- Only check original keys if Payhip isn't even configured
+    --[[if not KeyFound then  -- Only check original keys if APIs didn't find the key
         for _, MKey in ipairs(Settings.KeySettings.Key) do
             if enteredKey == MKey then
                 KeyFound = true
@@ -1933,9 +1934,9 @@ KeyUI.Main.Input.InputBox.FocusLost:Connect(function()
                 break
             end
         end
-    end
+    end]]
     
-    -- ========== STEP 4: HANDLE RESULT ==========
+    -- ========== STEP 4: HANDLE RESULT (UNCHANGED) ==========
     if KeyFound then 
         -- SUCCESS - Key is valid (from work.ink, Payhip, or original)
         TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
@@ -1991,7 +1992,6 @@ KeyUI.Main.Input.InputBox.FocusLost:Connect(function()
         TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 500, 0, 187)}):Play()
     end
 end)
-
     KeyMain.Hide.MouseButton1Click:Connect(function()
     TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {BackgroundTransparency = 1}):Play()
     TweenService:Create(KeyMain, TweenInfo.new(0.6, Enum.EasingStyle.Exponential), {Size = UDim2.new(0, 467, 0, 175)}):Play()
