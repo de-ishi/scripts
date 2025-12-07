@@ -1906,7 +1906,7 @@ KeyUI.Main.Input.InputBox.FocusLost:Connect(function()
     end
     
     -- ========== STEP 2: WORK.INK VALIDATION (if Payhip failed or not configured) ==========
-    if not KeyFound then  -- Only check work.ink if Payhip didn't find the key
+    --[[if not KeyFound then  -- Only check work.ink if Payhip didn't find the key
         local workInkValid = false
         local workInkSuccess, workInkResponse = pcall(function()
             return requestFunc({
@@ -1923,10 +1923,10 @@ KeyUI.Main.Input.InputBox.FocusLost:Connect(function()
                 FoundKey = enteredKey
             end
         end
-    end
+    end]]--
     
     -- ========== STEP 3: ORIGINAL KEY CHECK (if both APIs failed) ==========
-    --[[if not KeyFound then  -- Only check original keys if APIs didn't find the key
+    if not KeyFound then  -- Only check original keys if APIs didn't find the key
         for _, MKey in ipairs(Settings.KeySettings.Key) do
             if enteredKey == MKey then
                 KeyFound = true
@@ -1934,7 +1934,7 @@ KeyUI.Main.Input.InputBox.FocusLost:Connect(function()
                 break
             end
         end
-    end]]
+    end
     
     -- ========== STEP 4: HANDLE RESULT (UNCHANGED) ==========
     if KeyFound then 
